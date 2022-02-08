@@ -20,8 +20,8 @@ class ListsSuite extends munit.FunSuite:
     assert(1 + 1 == 2)
   }
 
-  test("one plus one is three (0pts)?") {
-    assert(1 + 1 == 3) // This assertion fails! Go ahead and fix it.
+  test("one plus one is not three (0pts)?") {
+    assert(1 + 1 != 3) // This assertion fails! Go ahead and fix it.
   }
 
   /**
@@ -57,7 +57,7 @@ class ListsSuite extends munit.FunSuite:
    * when writing tests.
    */
   test("details why one plus one is not three (0pts)") {
-    assertEquals(1 + 1, 3) // Fix me, please!
+    assertEquals(1 + 1, 2) // Fix me, please!
   }
 
   /**
@@ -99,11 +99,31 @@ class ListsSuite extends munit.FunSuite:
    * every tested aspect of a method.
    */
   test("sum of a few numbers (10pts)") {
-    assert(sum(List(1,2,0)) == 3)
+    assertEquals(sum(List(1,2,0)), 3)
+  }
+
+  test("sum of one number (10pts)") {
+    assertEquals(sum(List(1)), 1)
+  }
+
+  test("sum of empty list (10pts)") {
+    assertEquals(sum(List()), 0)
   }
 
   test("max of a few numbers (10pts)") {
-    assert(max(List(3, 7, 2)) == 7)
+    assertEquals(max(List(3, 7, 2)), 7)
+  }
+
+  test("max of one number (10pts)") {
+    assertEquals(max(List(3)), 3)
+  }
+
+  test("max of nothing throws a `java.util.NoSuchElementException` (10pts)") {
+    try
+      max(List())
+      fail("No exception has been thrown")
+    catch
+      case e: NoSuchElementException => ()
   }
 
 
